@@ -1,9 +1,24 @@
-Analise do Código .hpp: Após a leitura da header file foram notados a funções que precisariam ser implementadas no .cpp, após as funções serem identificadas as entradas e saídas de cada função foram identificadas e um prompt foi escrito, este prompt foi inserido em um arquivo .txt para consulta.
+Analise do Código .hpp: Após a leitura da header file foram notados a funções que precisariam ser implementadas no .cpp, após as funções serem identificadas as entradas e saídas de cada função foram identificadas e um prompt foi escrito, este prompt foi inserido no um arquivo .txt para consulta.
 
 Depuração e debugging: Na depuração percebemos que o prompt escrito solicitava escrita de funções como dot e cross já estavam implementadas no .hpp e ficaram duplicadas no arquivo .cpp, e apagamos as funções duplicadas.
     Depois de corrigir as funções duplicadas partimos para debuggar o código onde encontramos que o valor EPSILOn não estava definido, então adicionamos a Global.hpp onde a constante EPSILON  está implementada.
 
-Pronpt:    
+Funções:
+    1.Normalização (normalized):aplica a normalização no vetor, e retorna um novo vetor normalizado, pode ser chamado em objetos constantes.
+    2.Normalizar (normalize):aplica a normalização no vetor, e retorna o próprio vetor modificado, não pode ser chamado em objetos constantes.
+    3.Verificar igualdade (equals):verifica se o vetor é igual ao vetor passado como parâmetro dentro de uma tolerancia, verificação feita nos pontos x e y.
+
+Operator overload:
+    1.operator+:habilita o operador + a fazer soma de vetores.
+    2.operator-:habilita o operador - a fazer subtração de vetores.
+    3.operator*:habilita o operador * a fazer multiplicação de vetores.
+    4.operator/:habilita o operador / a fazer divisão de vetores.
+    5.operator+=:habilita o operador += a fazer soma de vetores no próprio vetor.
+    6.operator-=:habilita o operador -= a fazer subtração de vetores no próprio vetor.
+    7.operator*=:habilita o operador *= a fazer multiplicação de vetores no próprio vetor.
+    8.operator/=:habilita o operador /= a fazer divisão de vetores no próprio vetor.
+
+Prompt:    
 <Role>
     For this task you are a C++ developer with a expecialization in game development.
 </Role>
