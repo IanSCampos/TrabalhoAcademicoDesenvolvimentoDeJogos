@@ -1,0 +1,65 @@
+Analise do Código .hpp: Após a leitura da header file foram notados a funções que precisariam ser implementadas no .cpp, após as funções serem identificadas as entradas e saídas de cada função foram identificadas e um prompt foi escrito, este prompt foi inserido no um arquivo .txt para consulta.
+
+Depuração e debugging: Na depuração percebemos que o prompt escrito solicitava escrita de funções como dot e cross já estavam implementadas no .hpp e ficaram duplicadas no arquivo .cpp, e apagamos as funções duplicadas.
+    Depois de corrigir as funções duplicadas partimos para debuggar o código onde encontramos que o valor EPSILOn não estava definido, então adicionamos a Global.hpp onde a constante EPSILON  está implementada.
+
+Funções:
+    1.Normalização (normalized):aplica a normalização no vetor, e retorna um novo vetor normalizado, pode ser chamado em objetos constantes.
+    2.Normalizar (normalize):aplica a normalização no vetor, e retorna o próprio vetor modificado, não pode ser chamado em objetos constantes.
+    3.Verificar igualdade (equals):verifica se o vetor é igual ao vetor passado como parâmetro dentro de uma tolerancia, verificação feita nos pontos x e y.
+
+Operator overload:
+    1.operator+:habilita o operador + a fazer soma de vetores.
+    2.operator-:habilita o operador - a fazer subtração de vetores.
+    3.operator*:habilita o operador * a fazer multiplicação de vetores.
+    4.operator/:habilita o operador / a fazer divisão de vetores.
+    5.operator+=:habilita o operador += a fazer soma de vetores no próprio vetor.
+    6.operator-=:habilita o operador -= a fazer subtração de vetores no próprio vetor.
+    7.operator*=:habilita o operador *= a fazer multiplicação de vetores no próprio vetor.
+    8.operator/=:habilita o operador /= a fazer divisão de vetores no próprio vetor.
+
+Prompt:    
+<Role>
+    For this task you are a C++ developer with a expecialization in game development.
+</Role>
+
+<Context>
+    This is a task made for a game design course, we ain to make the code for basic macanics and in the end make a simple 2D game.
+</Context>
+
+<Restriction>
+1.coments with no more than 2 lines.
+2.include libraries with < and .hpp.
+3.Ask before any include outside standard lib.
+4.components are finite floating point numbers.
+</Restriction>
+
+<Instructions>
+    1.Write the struct: struct Vector2D {
+        float x{0.0f};
+        float y{0.0f};
+    };
+    2.Write the contructors, 
+        constexpr Vector2D() noexcept = default;
+        constexpr Vector2D(float in_x, float in_y) noexcept : x(in_x), y(in_y) {}
+    3.Write the functions, Vector2D normalized() const;, void normalize();
+        The Vector2D normalized() const; must create and return a new Vector2D that points to the same direction as the current vector but has a length of 1;
+        void normalize() must scale the current vector to the length of 1,  sugestion of implementation: *this = this->normalized();
+    4.Write the function, bool equals(const Vector2D& rhs, float tolerance = EPSILON) const noexcept; this function must check if the diference of rhs.x and rhs.y is less than the tolerance for current vector x and y, use the standard tolerance for retro 2D games.
+    5.Write the operators overloads:
+        [[nodiscard]] Vector2D operator+(const Vector2D& rhs) const noexcept;  Return a new vector with the sum of the current vector and the rhs vector.
+        [[nodiscard]] Vector2D operator-(const Vector2D& rhs) const noexcept;  Return a new vector with the difference of the current vector and the rhs vector.
+        [[nodiscard]] Vector2D operator*(float scalar) const noexcept; Return a new vector with the product of the current vector and the scalar.
+        [[nodiscard]] Vector2D operator/(float scalar) const noexcept; Return a new vector with the division of the current vector and the scalar.
+        Vector2D& operator+=(const Vector2D& rhs) noexcept;  Modify the current vector with the sum of the current vector and the rhs vector.
+        Vector2D& operator-=(const Vector2D& rhs) noexcept;  Modify the current vector with the difference of the current vector and the rhs vector.
+        Vector2D& operator*=(float scalar) noexcept;  Modify the current vector with the product of the current vector and the scalar.
+        Vector2D& operator/=(float scalar) noexcept;  Modify the current vector with the division of the current vector and the scalar.
+    6.Write the functions: [[nodiscard]] constexpr float length_squared() const noexcept and [[nodiscard]] float length() const noexcept
+        The [[nodiscard]] constexpr float length_squared() const noexcept, return x * x + y * y;
+        The [[nodiscard]] float length() const noexcept, return std::sqrt(length_squared());
+    7. Write the function: [[nodiscard]] float dot(const Vector2D& rhs) const noexcept, and [[nodiscard]] float cross(const Vector2D& rhs) const noexcept
+        The [[nodiscard]] float dot(const Vector2D& rhs) const noexcept, return x * rhs.x + y * rhs.y;
+        The [[nodiscard]] float cross(const Vector2D& rhs) const noexcept, return x * rhs.y - y * rhs.x;
+    8.All the above must be contained in a simgle cpp file named Vector2D.cpp.
+</Instructions>
