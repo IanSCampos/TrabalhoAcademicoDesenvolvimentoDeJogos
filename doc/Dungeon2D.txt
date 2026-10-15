@@ -1,0 +1,60 @@
+Analise do código.hpp: Após a leitura da header file foram notados a funções que precisariam ser implementadas no .cpp, após as funções serem identificadas as entradas e saídas de cada função foram identificadas e um prompt foi escrito, este prompt foi inserido no um arquivo .txt para consulta.
+
+Depuração e Debugging: O metodo construtor não tinha sido implementado.
+
+Prompt:
+<Role>
+    For this task you are a C++ developer with a expecialization in game development.
+</Role>
+
+<Context>
+1. We are implementing the physics for a 2D game.
+2.struct used for rectangle:
+    struct Rect {
+    int left{0};
+    int top{0};
+    int right{0};
+    int bottom{0};
+};
+3.A corridor is a rectangle
+4.Struct used for BSP Tree:
+    struct BSPNode {
+    Rect region;                      ///< The area of space this node covers (tiles).
+    Rect room;                        ///< The room carved in this node, if it is a leaf.
+    std::unique_ptr<BSPNode> left;    ///< First child, or null if this is a leaf.
+    std::unique_ptr<BSPNode> right;   ///< Second child, or null if this is a leaf.
+
+    /// True when this node has no children (and therefore holds a room).
+    [[nodiscard]] bool isLeaf() const noexcept {
+        return !left && !right;
+    }
+};
+5.Corridors will be stored in a vector of Corridors.
+6. Corridor is declared as: using Corridor = Rect;
+7.This is a task made for a game design course, we ain to make the code for basic macanics and in the end make a simple 2D game.
+</Context>
+
+<Restriction>
+1.coments with no more than 2 lines.
+2.include libraries with < and .hpp.
+3.Ask before any include outside standard lib and math.
+4.Corridors must be 3 tiles wide.
+5.The smallest room is 5 x 5 tiles.
+6.All the rooms and corridors must be connected.
+7.The dungeon must be fully generated before the function returns.
+8.width and height of the dungeon tiles must be >0.
+9.Root of the BSP tree must be NULL before being generated.
+</Restriction>
+
+<Instructions>
+1.Implement the function void generate(unsigned seed); for the Dungeon2D class.
+    The function must generate the dungeon, filling the root and the corridors.
+    This function must generate the rooms and corridors of the dungeon using a BSP(binary space partitioning algorithm).
+    The parameter is a pseudorandom generator seed.
+    It has no return value(void function).
+    The root of the tree is stated as: std::unique_ptr<BSPNode> root;
+    The vector of corridors is stated as: std::vector<Corridor> corridors;
+    The Width of the dungeon is stated as: int width{0};
+    The height of the dungeon is stated as: int height{0};
+2. All the above must be contained in a simgle cpp file named Dungeon2D.cpp.   
+</Instructions>
